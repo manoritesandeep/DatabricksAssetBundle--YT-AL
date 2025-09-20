@@ -1,0 +1,15 @@
+resources:
+  jobs:
+    db_ingestion_job:
+      name: db_ingestion_job
+      tasks:
+        - task_key: db-ingestion
+          notebook_task:
+            notebook_path: ../../src/notebooks/db_ingestion.ipynb
+            base_parameters:
+              catalog_name: ${var.catalog_name}
+              # catalog_name: data
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED
